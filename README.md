@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications.  Express helps to create restful api’s which was proposed by a phd student in his doctoral thesis.  
+
 - [ ] Describe Middleware?
+
+We can think of middleware as an array of functions that get executed in the order they are introduced into the server code.  I like to think of middleware like less from when we learned it to help organize and manage our applications styling.  It allows us to break down our api’s code into smaller more manageable portions allowing for quicker editing if something were to change. 
 
 - [ ] Describe a Resource?
 
+We can have a single URL per resource so a resource in this case is an endpoint or set of data we want to acquire from the database. 
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+A 201 status is common to tell the user they have been successful in getting the data they wanted. 
+
 - [ ] How can we partition our application into sub-applications?
+
+You can use: .use() a router or sub-router, also works on the Express application instance! That means I can create new instances of the Express object, and .use it in another Express object just like a router or other middleware.
 
 ## Minimum Viable Product
 
