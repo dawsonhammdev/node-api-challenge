@@ -1,15 +1,16 @@
 //importing express
-const express = require('express');
+const express = require("express");
 
 //importing helpers
 const Action = require("./data/helpers/actionModel")
 
 
+
 //router
 const router = express.Router();
 
-router.get('/', (req,res) => {
-    Action.get(req.query)
+router.get("/actions", (req,res) => {
+    Action.find(req.body)
     .then(action => {
         res.status(200).json(action);
     })
@@ -20,4 +21,6 @@ router.get('/', (req,res) => {
         });
     });
 });
+
+module.exports = router
 

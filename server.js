@@ -1,14 +1,24 @@
-const express = require("express");
+//import express
+const express = require('express');
 
 //importing routers
-const actionRouter = require("./action-router")
-const projectRouter = require("./project-router")
+const apiRouter = require('./api/apiRouter');
 
 const server = express();
 
-//global middleware
 server.use(express.json());
 
-server.use("/api/data", actionRouter, projectRouter);
+
+server.get('/', (req, res) => {
+    res.send(`<h2>Let's write some middleware!</h2>`);
+  });
+
+server.use("/api", apiRouter);
+
+
+module.exports = server;
+
+
+//custom middle ware
 
 
