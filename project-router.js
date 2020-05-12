@@ -20,6 +20,20 @@ router.get("/", (req,res) => {
     });
 });
 
+router.post("/", (req,res) => {
+    Project.insert(req.body)
+    .then(project => {
+        res.status(201).json(project)
+    })
+    .catch(error => {
+        // log error to server
+        console.log(error);
+        res.status(500).json({
+          message: 'Error adding the hub',
+        });
+    })
+});
+
 
 
 module.exports = router
