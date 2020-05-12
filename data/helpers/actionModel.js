@@ -2,13 +2,13 @@ const db = require('../dbConfig.js');
 const mappers = require('./mappers');
 
 module.exports = {
-  find,
+  get,
   insert,
   update,
   remove,
 };
 
-function find(id) {
+function get(id) {
   let query = db('actions');
 
   if (id) {

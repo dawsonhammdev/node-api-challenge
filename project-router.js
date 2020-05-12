@@ -8,7 +8,7 @@ const router = express.Router();
 const Project = require("./data/helpers/projectModel")
 
 router.get("/", (req,res) => {
-    Project.get(req.query)
+    Project.get()
     .then(project => {
         res.status(200).json(project);
     })
@@ -19,6 +19,8 @@ router.get("/", (req,res) => {
         });
     });
 });
+
+
 
 module.exports = router
 
