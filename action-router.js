@@ -56,17 +56,22 @@ router.put("/:id", (req,res) => {
 })
 
 router.post('/', (req,res) => {
-    Action.insert(req.body)
-    .then(action => {
-        res.status(201).json(action)
-    })
-    .catch(error => {
-        // log error to server
-        console.log(error);
-        res.status(500).json({
-          message: 'Error adding the project',
-        });
-    })
+    const action  = req.body
+    if(isValidAction(action)) {
+            Action.insert(action)
+            .then(action => {
+                res.status(201).json(action)
+            })
+            .catch(error => {
+                // log error to server
+                console.log(error);
+                res.status(500).json({
+                  message: 'Please provide an existing project id',
+                });
+            })
+    } else {
+        res.status(400).json({message : 'Error adding project'})
+    }
 
 })
 
@@ -86,6 +91,10 @@ router.delete('/:id', (req,res) => {
         res.status(500).json({ message: error.messsage });
       });
 })
+
+function isValidAction(action) {
+    return Boolean(action.project_id && action.description && action.notes);
+}
 
 
 
